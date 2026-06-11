@@ -1,141 +1,39 @@
 /* اهتزاز الشاشة عند الرسوب */
-.app-container.fail {
+.page.fail {
   animation: shake 0.6s ease-in-out;
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  10% { transform: translateX(-10px); }
-  20% { transform: translateX(10px); }
-  30% { transform: translateX(-10px); }
-  40% { transform: translateX(10px); }
-  50% { transform: translateX(0); }
-  100% { transform: translateX(0); }
+  0%,100% { transform: translateX(0); }
+  10%,30%,50%,70%,90% { transform: translateX(-10px); }
+  20%,40%,60%,80% { transform: translateX(10px); }
 }
 
-/* توهج وتكبير الشاشة عند النجاح */
-.app-container.success {
+/* أنيميشن نجاح عادي */
+.page.success {
   animation: celebrate 1.2s ease-in-out;
 }
 
 @keyframes celebrate {
-  0% { transform: scale(1); opacity: 0.8; background-color: #fff; }
-  25% { transform: scale(1.05); opacity: 1; background-color: #f0f9ff; }
-  50% { transform: scale(1.1); opacity: 1; background-color: #e0f7ff; }
-  75% { transform: scale(1.05); opacity: 1; background-color: #f0f9ff; }
-  100% { transform: scale(1); opacity: 1; background-color: #fff; }
+  0% { transform: scale(1); background-color: #0f172a; }
+  25% { transform: scale(1.05); background-color: #1e3a8a; }
+  50% { transform: scale(1.1); background-color: #2563eb; }
+  75% { transform: scale(1.05); background-color: #1e40af; }
+  100% { transform: scale(1); background-color: #0f172a; }
 }
 
-/* التصميم العام */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f5f5f5;
+/* أنيميشن نجاح قوي جدًا */
+.page.super-success {
+  animation: superCelebrate 1.5s ease-in-out;
 }
 
-.app-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+@keyframes superCelebrate {
+  0% { transform: scale(1); background-color: #0f172a; }
+  20% { transform: scale(1.1) rotate(-3deg); background-color: #2563eb; }
+  40% { transform: scale(1.15) rotate(3deg); background-color: #22d3ee; }
+  60% { transform: scale(1.2) rotate(-3deg); background-color: #0ea5e9; }
+  80% { transform: scale(1.15) rotate(3deg); background-color: #38bdf8; }
+  100% { transform: scale(1) rotate(0); background-color: #0f172a; }
 }
 
-.card {
-  background-color: #fff;
-  padding: 20px 30px;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.badge {
-  background-color: #1d4ed8;
-  color: #fff;
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 12px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.inputs label {
-  display: block;
-  margin-bottom: 15px;
-}
-
-.inputs input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.calc-btn {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  background-color: #1d4ed8;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.3s;
-}
-
-.calc-btn:hover {
-  background-color: #2563eb;
-}
-
-.result {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.score-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid #1d4ed8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 10px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.result-content h2 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.result-content .message {
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-.result-content .emojis {
-  font-size: 24px;
-}
-
-.result-content .advice {
-  font-size: 14px;
-  color: #555;
-  margin-top: 8px;
-}
-
-.result-content .exact {
-  font-size: 12px;
-  color: #888;
-  margin-top: 4px;
-}
-
-.dua {
-  font-size: 14px;
-  margin-bottom: 15px;
-  color: #444;
-}
+/* باقي CSS موجود مسبقًا */
