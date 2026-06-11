@@ -82,7 +82,7 @@ function App() {
       advice = "نتيجة ممتازة. استمر على نفس المستوى.";
       mood = "success";
       emojis = "🔥🏆🎉😎🚀";
-      anim = "success";
+      anim = "super-success";
     }
 
     setResult({
@@ -96,11 +96,11 @@ function App() {
     });
 
     setScreenAnim(anim);
-    setTimeout(() => setScreenAnim(""), 1500);
+    setTimeout(() => setScreenAnim(""), 1800);
   };
 
   return (
-    <div className={`app-container ${screenAnim}`}>
+    <main className={`page ${screenAnim}`}>
       <section className="card">
         <div className="badge">حاسبة المحصلة</div>
         <h1>احسب نتيجتك النهائية</h1>
@@ -154,7 +154,7 @@ function App() {
           </div>
         )}
       </section>
-    </div>
+    </main>
   );
 }
 
