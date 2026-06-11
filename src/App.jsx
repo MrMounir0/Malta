@@ -13,7 +13,7 @@ function App() {
   const [homeworkScore, setHomeworkScore] = useState("");
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
-  const [screenAnim, setScreenAnim] = useState(""); // "" | "success" | "fail"
+  const [screenAnim, setScreenAnim] = useState("");
 
   const getRandomTip = () => {
     const index = Math.floor(Math.random() * sadTips.length);
