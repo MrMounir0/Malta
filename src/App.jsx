@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 const sadTips = [
-  "لا تيأس. راجع أخطاءك، وابدأ الفصل القادم بخطة دراسة من أول أسبوع.",
+  "لا تيأس. راجع أخطاءك وابدأ الفصل القادم بخطة دراسة من أول أسبوع.",
   "قسم المادة إلى أجزاء صغيرة. ساعة يوميًا أفضل من ضغط ليلة الامتحان.",
-  "ركز على الأسئلة المتكررة، واسأل المدرس عن نقاط ضعفك قبل الاختبار.",
+  "ركز على الأسئلة المتكررة واسأل المدرس عن نقاط ضعفك قبل الاختبار.",
   "اعمل جدول بسيط. مراجعة قصيرة بعد كل محاضرة تفرق كثير.",
-  "الفشل محاولة ناقصة، وليس نهاية الطريق. عوضها الفصل القادم بتركيز أعلى."
+  "الفشل محاولة ناقصة وليس نهاية الطريق. عوضها الفصل القادم بتركيز أعلى."
 ];
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
   const [homeworkScore, setHomeworkScore] = useState("");
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
+  const [screenAnim, setScreenAnim] = useState(""); // "" | "success" | "fail"
 
   const getRandomTip = () => {
     const index = Math.floor(Math.random() * sadTips.length);
@@ -45,6 +46,7 @@ function App() {
     let advice = "";
     let mood = "";
     let emojis = "";
+    let anim = "";
 
     if (homework <= 40 || roundedTotal < 58) {
       status = "راسب";
@@ -52,30 +54,35 @@ function App() {
       advice = getRandomTip();
       mood = "sad";
       emojis = "😢💔📚";
+      anim = "fail";
     } else if (roundedTotal === 58) {
       status = "قريب جدًا";
       message = "بدك علامتين مساعدة لتنجح.";
       advice = "ركز على مراجعة بسيطة واطلب توضيح درجتك من المدرس.";
       mood = "neutral";
       emojis = "😐📘";
+      anim = "fail";
     } else if (roundedTotal === 59) {
       status = "قريب جدًا";
       message = "بدك علامة مساعدة لتنجح.";
       advice = "أنت قريب من النجاح. راجع درجتك بهدوء وشوف فرص التحسين.";
       mood = "neutral";
       emojis = "🙂📘";
+      anim = "fail";
     } else if (roundedTotal >= 60 && roundedTotal <= 70) {
       status = "ناجح";
       message = "مبروك نجحت شحط.";
-      advice = "الفصل الجاي ارفع مستواك أكثر، لأنك قريب من نتيجة أفضل.";
+      advice = "الفصل الجاي ارفع مستواك أكثر.";
       mood = "pass";
       emojis = "😄🎉👏";
+      anim = "success";
     } else if (roundedTotal >= 71 && roundedTotal <= 100) {
       status = "نجاح قوي";
       message = "ألف مبروك نجاح يا وحش.";
-      advice = "نتيجة ممتازة. استمر على نفس المستوى وارفع طموحك أكثر.";
+      advice = "نتيجة ممتازة. استمر على نفس المستوى.";
       mood = "success";
       emojis = "🔥🏆🎉😎🚀";
+      anim = "success";
     }
 
     setResult({
@@ -87,18 +94,17 @@ function App() {
       mood,
       emojis
     });
+
+    setScreenAnim(anim);
+    setTimeout(() => setScreenAnim(""), 1500);
   };
 
   return (
-    <main className="page">
+    <div className={`app-container ${screenAnim}`}>
       <section className="card">
         <div className="badge">حاسبة المحصلة</div>
-
         <h1>احسب نتيجتك النهائية</h1>
-
-        <p className="dua">
-          لا تنسو تدعو لأخوكن منير بالنجاح والتوفيق 🤍
-        </p>
+        <p className="dua">لا تنسو تدعو لأخوكن منير بالنجاح والتوفيق 🤍</p>
 
         <div className="inputs">
           <label>
@@ -138,7 +144,6 @@ function App() {
               <span>{result.total}</span>
               <small>من 100</small>
             </div>
-
             <div className="result-content">
               <h2>{result.status}</h2>
               <p className="message">{result.message}</p>
@@ -149,7 +154,7 @@ function App() {
           </div>
         )}
       </section>
-    </main>
+    </div>
   );
 }
 
